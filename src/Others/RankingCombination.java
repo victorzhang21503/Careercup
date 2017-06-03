@@ -65,6 +65,12 @@ public class RankingCombination {
 	    return stairProduct[n] / stairProduct[n - k] / stairProduct[k];
 	  }
 	  
+	 
+	  
+	  
+	  
+	  // dp[4] = C(4,1) * dp[3] + C(4, 2) * dp[2] + C(4,3) * dp[1] + C(4,4) * dp[0]
+	  
 	  public static long findTotalCount(int n){
 	        long[] dp = new long[n + 1];
 	        if(n <= 1){
