@@ -1,54 +1,96 @@
 package Others;
-
+/*
+ * Raking combination
+ * 
+ * Type: DP, Math
+ * Difficulty: $$$$$
+ * 
+ *  There are n people participating a game, they can play the game as individual or make team of any size.
+ *  Write a function to compute the number of different combination to get the ranks
+ *  
+ *  Example
+ *  There are two people A and B: it comes 3 possible combination:
+ *  
+ *  1： [A, B]
+ *  2： [B, A]
+ *  3: [(AB)]
+ *  
+ *  when n = 3, the output is 13
+ * */
 public class RankingCombination {
+	double[] stairProduct;
 	public static void main(String[] args) {
 		RankingCombination solution = new RankingCombination();
 	    System.out.println(solution.getRankingNumber(4));
 	  }
 	  
-	  public int getRankingNumber(int n) {
-	    int res = 0;
+	public double getRankingNumber(int n) {
+	    double res = 0;
+	    stairProduct = new double[n + 1];
+	    
+	    stairProduct[0] = 1;
+	    stairProduct[1] = 1;
+	    
+	    for(int i = 2; i <= n; i++){
+	      stairProduct[i] = i * stairProduct[i - 1];
+	    }
+	    
 	    for(int i = 1; i <= n; i++) {
-	      int teamNum = getTeams(n, i, 2, 1, 1);
+	      double teamNum = getTeams(n, i, 1);
 	      //System.out.println(teamNum);
-	      res += stairProduct(i, i) * teamNum;
+	      res += teamNum;
 	    }
 	    return res;
 	  }
 	  
-	  public int getTeams(int n, int teams, int pre, int cnt, int mul) {
+	  public double getTeams(int n, int teams, double mul) {
 	    
 	    if(n == teams) {
-	      return mul;
+	      return mul * stairProduct[teams];
 	    }
 	    if(teams == 0) {
 	      return 0;
 	    }
 	    
-	    int res = 0;
-	    for(int i = pre;  i <= n - teams + 1; i++) {
-	      if(i == pre) {
-	        int tmp = mul / cnt * C(n, i);
-	        res += getTeams(n - i, teams - 1,  i, cnt + 1, tmp);
-	      }else {
-	        int tmp = mul * C(n, i);
-	        res += getTeams(n - i, teams - 1, i, 1, tmp);
-	      } 
+	    double res = 0;
+	    for(int i = 1;  i <= n - teams + 1; i++) {
+	        double tmp = mul * C(n, i);
+	        res += getTeams(n - i, teams - 1, tmp);
 	    }
 	    
 	    return res;
 	  }
 	  
-	  public int C(int n, int k) {
-	    return stairProduct(n, k) / stairProduct(k, k);
+	  public double C(int n, int k) {
+	    return stairProduct[n] / stairProduct[n - k] / stairProduct[k];
 	  }
 	  
+	  public static long findTotalCount(int n){
+	        long[] dp = new long[n + 1];
+	        if(n <= 1){
+	          return n;
+	        }
+	        dp[0] = 1;
+	        dp[1] = 1;
+	        for(int i = 2; i <= n; i++){
+	          for(int k = 0; k < i; k++){
+	            dp[i] += helper(i, i - k) * dp[k];
+	          }
+	        }
+	        return dp[n];
+	  }
 	  
-	  public int stairProduct(int n, int len){
-	    int mul = 1;
-	    for(int i = n; i > n - len; i--) {
-	      mul *= i;
+	  public static long helper(int n, int k){
+	    long res = 1;
+	    
+	    for(int i = n - k + 1; i <= n; i++){
+	        res *= i;
 	    }
-	    return mul;
+	    
+	    for(int i = 1; i <= k; i++){
+	        res /= i;
+	    }
+	    
+	    return res;
 	  }
 }
