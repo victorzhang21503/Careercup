@@ -4,6 +4,9 @@ import java.util.*;
 /*
  * Chemical formula parser
  * 
+ * Difficulty: $$$$
+ * Type: Calculator
+ * 
  * A chemical element could contains multiple characters with 
  * initial upper case and the rest lower case
  * A chemical formula contains with one or more chemical element
