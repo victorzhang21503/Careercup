@@ -1,8 +1,9 @@
 package Facebook;
 import java.util.*;
 /*
- *  Given n1,n2 is the number after moving one digit from n1. Eg. n1 = 123, then n2 can be
- *  12, 13 or 23. if we know the sum of n1 + n2, and find the possible values of n1 and n2.
+ * Description:
+ * Given n1,n2 is the number after moving one digit from n1. Eg. n1 = 123, then n2 can be
+ * 12, 13 or 23. if we know the sum of n1 + n2, and find the possible values of n1 and n2.
  *
  * */
 

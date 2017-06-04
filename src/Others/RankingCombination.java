@@ -5,6 +5,7 @@ package Others;
  * Type: DP, Math
  * Difficulty: $$$$$
  * 
+ *  Description:
  *  There are n people participating a game, they can play the game as individual or make team of any size.
  *  Write a function to compute the number of different combination to get the ranks
  *  

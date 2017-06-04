@@ -7,6 +7,7 @@ import java.util.*;
  * Difficulty: $$$
  * Type: general
  * 
+ * Description:
  * 题目是给你一个byte array, 一个byte如果大于127那么就是double byte, 
  * 否则是single byte。问你最后一个char 是1位还是2位的
  * 举个例子：

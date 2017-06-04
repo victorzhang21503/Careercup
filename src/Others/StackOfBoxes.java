@@ -7,6 +7,7 @@ import java.util.*;
  * Type: DP
  * Difficulty: $$$
  * 
+ * Description:
  * You have a stack of n boxes, with widths w1 , 
  * heights h i, and depths di . 
  * The boxes cannot be rotated and can only be stacked on top of one another 
